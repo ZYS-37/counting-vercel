@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10241f" />
+    <title>21 Games — a pigeonhole proof</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <a class="brand" href="#top" aria-label="Twenty-one games home"><span class="brand-mark">♞</span> PROOF STUDIO</a>
+        <span class="nav-label">Pigeonhole principle · interactive</span>
+      </nav>
+
+      <section class="hero" id="top">
+        <div class="eyebrow"><span></span> COUNTING THEORY IN MOTION</div>
+        <h1>Exactly <em>21</em> games<br />are hiding in the calendar.</h1>
+        <p class="hero-copy">A chess master plays every day, but never more than 12 games in a week. Explore why some uninterrupted run of days must total exactly 21 games.</p>
+        <div class="hero-actions">
+          <button class="primary" id="animate-button">Watch the proof <span>→</span></button>
+          <button class="ghost" id="random-button">Shuffle a valid schedule</button>
+        </div>
+        <div class="rule-card"><span class="rook">♜</span><span><strong>11 weeks</strong> are available — but the argument only needs the <strong>first 3</strong>.</span></div>
+      </section>
+
+      <section class="explorer" aria-labelledby="explorer-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">TRY A SCHEDULE</p>
+            <h2 id="explorer-title">Three weeks on the board</h2>
+          </div>
+          <div class="legend"><span class="dot mint"></span> consecutive run <span class="dot gold"></span> matching totals</div>
+        </div>
+        <p class="instruction">Every shuffle respects the two rules: at least one game daily, and 7–12 games each week. The highlighted cells form the guaranteed run.</p>
+        <div class="weeks" id="weeks" aria-live="polite"></div>
+        <div class="finding" id="finding"></div>
+      </section>
+
+      <section class="proof-section" aria-labelledby="proof-title">
+        <div class="proof-intro">
+          <p class="section-kicker">THE IDEA</p>
+          <h2 id="proof-title">Look at totals, not individual games.</h2>
+          <p>Let <i>S</i><sub>d</sub> be the number of games played by the end of day <i>d</i>. The cards below are the 22 values <i>S</i><sub>0</sub>, <i>S</i><sub>1</sub>, …, <i>S</i><sub>21</sub>, reduced modulo 21.</p>
+        </div>
+        <div class="residue-panel">
+          <div class="residue-head"><span>Cumulative total</span><span>remainder after ÷ 21</span></div>
+          <div class="residues" id="residues"></div>
+        </div>
+      </section>
+
+      <section class="steps" aria-label="Proof steps">
+        <article class="step">
+          <span class="step-number">01</span>
+          <h3>Twenty-two totals, twenty-one remainders.</h3>
+          <p>There are 22 cumulative totals from day 0 through day 21, but only 21 possible remainders modulo 21. Two totals therefore have the same remainder.</p>
+        </article>
+        <article class="step">
+          <span class="step-number">02</span>
+          <h3>Same remainder means a multiple of 21.</h3>
+          <p>If those totals occur at days <i>a</i> and <i>b</i>, then <i>S</i><sub>b</sub> − <i>S</i><sub>a</sub> is a positive multiple of 21.</p>
+        </article>
+        <article class="step highlight-step">
+          <span class="step-number">03</span>
+          <h3>It can only be 21.</h3>
+          <p>Three weeks contain at most 3 × 12 = 36 games. The difference is positive and below 42, so its only possible positive multiple of 21 is <strong>21</strong>.</p>
+        </article>
+      </section>
+
+      <section class="conclusion">
+        <div class="conclusion-symbol">21</div>
+        <div>
+          <p class="section-kicker">CONCLUSION</p>
+          <h2>Some consecutive days contain exactly 21 games.</h2>
+          <p>The start and end days may vary with the schedule, but the pigeonhole principle guarantees that the interval exists every time.</p>
+        </div>
+      </section>
+    </main>
+    <footer>Built to make a counting proof feel tangible. <span>♞</span></footer>
+    <script src="/script.js"></script>
+  </body>
+</html>
